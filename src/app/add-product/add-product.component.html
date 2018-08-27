@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Add Product</h1>
+</div>  
+  <form #productForm="ngForm" (ngSubmit)="submitProduct(productForm.form);">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" placeholder="" name="product-name" ngModel #nameField="ngModel" required minlength="3">
+      <div *ngIf="nameField.touched && nameField.errors">
+        <div class="alert alert-danger" *ngIf="nameField.errors.required">The product name is required</div>
+        <div class="alert alert-danger" *ngIf="nameField.errors.minlength">The product name should be at least {{ nameField.errors.minlength.requiredLength }} characters long</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" rows="3" name="description" ngModel #descriptionField="ngModel"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <input type="text" class="form-control" placeholder="" name="price" ngModel #priceField="ngModel">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" [disabled]="!productForm.valid">Submit</button>
+    </div>
+  </form>
