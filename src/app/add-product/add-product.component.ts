@@ -19,7 +19,7 @@ export class AddProductComponent implements OnInit {
 
   submitProduct(form){
     console.log(form.value);
-    alert("The form was submitted");
-    form.reset();
+    console.log(form);
+    //form.reset();
   }
 }
